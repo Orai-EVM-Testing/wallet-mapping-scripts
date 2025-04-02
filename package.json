@@ -1,0 +1,16 @@
+{
+    "name": "orai-mapping-scripts",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "ts-node script.ts"
+    },
+    "dependencies": {
+        "@cosmjs/cosmwasm-stargate": "^0.33.1",
+        "@oraichain/proto": "^0.1.2",
+        "dotenv": "^16.4.7",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.2"
+    }
+}
