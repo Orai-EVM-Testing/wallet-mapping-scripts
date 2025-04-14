@@ -2,7 +2,7 @@ import { makeCosmoshubPath } from "@cosmjs/amino";
 import { defaultRegistryTypes, GasPrice, SigningStargateClient } from "@cosmjs/stargate";
 import { DirectSecp256k1HdWallet, DirectSecp256k1Wallet } from "@cosmjs/proto-signing";
 import "dotenv/config";
-import {} from "@oraichain/proto";
+import { getSigningEthermintClient } from "@oraichain/proto";
 import { ethermint, getSigningEthermintClientOptions } from "@oraichain/proto";
 
 const main = async () => {
@@ -30,10 +30,10 @@ const main = async () => {
         defaultTypes: defaultRegistryTypes,
     });
 
-    const client = await SigningStargateClient.connectWithSigner(chainInfo.rpcEndpoint, wallet, {
-        registry: registry,
-        aminoTypes: aminoTypes,
-        gasPrice: GasPrice.fromString("0.001orai"),
+    const client = await getSigningEthermintClient({
+        rpcEndpoint: "https://testnet-v2.rpc.orai.io/",
+        signer: wallet,
+        gasPrice: GasPrice.fromString("0.002orai"),
     });
 
     const balance = await client.getBalance(address, chainInfo.feeToken);
